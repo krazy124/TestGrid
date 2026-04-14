@@ -6,11 +6,9 @@ import streamlit as st
 st.markdown("""
 <style>
 
-/* ONLY apply on mobile */
 @media (max-width: 768px) {
 
-    /* Turn container into grid */
-    .st-key-test_grid div[data-testid="stVerticalBlock"] {
+    .st-key-test_grid div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 10px !important;
@@ -20,6 +18,14 @@ st.markdown("""
 
 </style>
 """, unsafe_allow_html=True)
+
+/* ONLY apply on mobile */
+@media (max-width: 768px) {
+
+    /* Turn container into grid */
+    .st-key-test_grid div[data-testid="stVerticalBlock"] {
+        display: grid !important;
+        grid-template-columns: 
 
 st.title("Mobile Grid Test")
 
