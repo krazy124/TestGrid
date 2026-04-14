@@ -1,159 +1,97 @@
 import streamlit as st
 
-# =========================
-# CSS (Hardcoded Grid)
-# =========================
 st.markdown("""
 <style>
-
-.flex-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 20px;
+/* Parent grid */
+.st-key-grid_wrapper > div[data-testid="stVerticalBlock"] {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px !important;
+    align-items: stretch;
 }
 
-.grid-item {
-    flex: 1 1 calc(25% - 12px);
-    max-width: calc(25% - 12px);
-}
-
-.grid-box {
-    background: #1f1f1f;
-    padding: 20px;
-    border-radius: 12px;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* MOBILE */
+/* Mobile */
 @media (max-width: 768px) {
-    .grid-item {
-        flex: 1 1 calc(50% - 12px);
-        max-width: calc(50% - 12px);
+    .st-key-grid_wrapper > div[data-testid="stVerticalBlock"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
+/* Card styling */
+.st-key-card_1,
+.st-key-card_2,
+.st-key-card_3,
+.st-key-card_4,
+.st-key-card_5,
+.st-key-card_6,
+.st-key-card_7,
+.st-key-card_8 {
+    background: #1f1f1f;
+    border-radius: 12px;
+    padding: 16px;
+    color: white;
+}
+
+/* Tighten spacing inside each card */
+.st-key-card_1 > div[data-testid="stVerticalBlock"],
+.st-key-card_2 > div[data-testid="stVerticalBlock"],
+.st-key-card_3 > div[data-testid="stVerticalBlock"],
+.st-key-card_4 > div[data-testid="stVerticalBlock"],
+.st-key-card_5 > div[data-testid="stVerticalBlock"],
+.st-key-card_6 > div[data-testid="stVerticalBlock"],
+.st-key-card_7 > div[data-testid="stVerticalBlock"],
+.st-key-card_8 > div[data-testid="stVerticalBlock"] {
+    gap: 0.5rem !important;
+}
+
+/* Optional: center labels a bit */
+.st-key-card_1 p,
+.st-key-card_2 p,
+.st-key-card_3 p,
+.st-key-card_4 p,
+.st-key-card_5 p,
+.st-key-card_6 p,
+.st-key-card_7 p,
+.st-key-card_8 p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: white !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
 st.title("Hardcoded Grid Layout")
 
-# =========================
-# GRID START
-# =========================
-st.markdown('<div class="flex-grid">', unsafe_allow_html=True)
+with st.container(key="grid_wrapper"):
 
-# ---------- ITEM 1 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Lights & Reflectors")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item1",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_1"):
+        st.write("Lights & Reflectors")
+        st.radio("", ["OK", "Needs Repair"], key="item1", horizontal=True)
 
-# ---------- ITEM 2 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Tires & Wheels")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item2",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_2"):
+        st.write("Tires & Wheels")
+        st.radio("", ["OK", "Needs Repair"], key="item2", horizontal=True)
 
-# ---------- ITEM 3 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Brakes")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item3",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_3"):
+        st.write("Brakes")
+        st.radio("", ["OK", "Needs Repair"], key="item3", horizontal=True)
 
-# ---------- ITEM 4 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Steering & Suspension")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item4",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_4"):
+        st.write("Steering & Suspension")
+        st.radio("", ["OK", "Needs Repair"], key="item4", horizontal=True)
 
-# ---------- ITEM 5 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Fluid Levels")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item5",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_5"):
+        st.write("Fluid Levels")
+        st.radio("", ["OK", "Needs Repair"], key="item5", horizontal=True)
 
-# ---------- ITEM 6 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Horn & Mirrors")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item6",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_6"):
+        st.write("Horn & Mirrors")
+        st.radio("", ["OK", "Needs Repair"], key="item6", horizontal=True)
 
-# ---------- ITEM 7 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Safety Equipment")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item7",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_7"):
+        st.write("Safety Equipment")
+        st.radio("", ["OK", "Needs Repair"], key="item7", horizontal=True)
 
-# ---------- ITEM 8 ----------
-st.markdown('<div class="grid-item">', unsafe_allow_html=True)
-with st.container():
-    st.markdown('<div class="grid-box">', unsafe_allow_html=True)
-    st.write("Cab Cleanliness")
-    st.radio("",
-        ["OK", "Needs Repair"],
-        key="item8",
-        horizontal=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# =========================
-# GRID END
-# =========================
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(key="card_8"):
+        st.write("Cab Cleanliness")
+        st.radio("", ["OK", "Needs Repair"], key="item8", horizontal=True)
